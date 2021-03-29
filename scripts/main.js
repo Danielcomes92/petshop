@@ -45,7 +45,7 @@ function App(data) {
                 <div data-container=${article._id} class="containerImgName contCardInternal">
                     <div class="flex justify-center">
                         <div class="relative">
-                            <div class="flex justify-center pt-16">
+                            <div class="flex justify-center pt-12">
                                 <img class="uno" src="${article.imagen}" alt="Foto producto de veterinaria ${article.tipo}">
                             </div>
                             <span data-stock="stock${article._id}" id="availability" class="${article.stock > 5 ? 'hidden' : 'absolute top-0 right-0 p-1 bg-red-700 text-white text-sm font-semibold'}">Ultimas unidades!</span> </div>

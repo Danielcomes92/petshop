@@ -57,6 +57,7 @@
 
 body {
     margin: 0;
+    padding: 0;
     background-color: var(--white);
 }
 #quantyCart {
@@ -134,7 +135,7 @@ main {
 }
 
 .uno {
-    width: 50%;
+    width: 60%;
 }
 
 .articleName {
