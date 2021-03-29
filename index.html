@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/tailwind.min.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@200;400;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="flex flex-col md:flex-row justify-between items-center bgDarkPurple h-28 text-white shadow-2xl">
+            <div class="logo pl-10 flex items-center">
+                <a href="index.html"><img src="/img/logo1.png" width="75px" alt="logo"></a>
+                <a href="index.html"><span class="fontLogo mx-2 text-5xl">Franco's</span></a>
+            </div>
+            <div class="navItems mt-6 flex justify-between">
+                <div class="flex text-1xl md:text-2xl md:pr-10">
+                    <a class="fontChanga colLightBlue font-bold mx-4" href="index.html">INICIO</a>
+                    <a class="fontChanga colLightBlue font-bold mx-4" href="veterinaria.html">VETERINARIA</a>
+                    <a class="fontChanga colLightBlue font-bold mx-4" href="accesorios.html">ACCESORIOS</a>
+                    <a class="fontChanga colLightBlue font-bold mx-4" href="contacto.html">CONTACTO</a>
+                    <div class="flex flex-row justify-between">
+                        <a id="cart"><svg class="w-8 h-8 cursor-pointer" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></a>
+                        <div class="span font-bold text-xs relative" id="quanty"><div>
+                            <div id="cartContainer" class="hidden absolute">
+                                <table>
+                                    <thead>
+                                        <tr class="hidden" id="tHead">
+                                            <th>Cant.</th>
+                                            <th>Articulo</th>
+                                            <th>Precio</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="listItems">
+                                    </tbody>
+                                </table>
+                                <div class="flex justify-center">
+                                    <a href="#" id="buy" class="button u-full-width text-lg">El carrito esta vacio</a>
+                                </div>
+                            </div>       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        </nav>
+        <div class="bgDarkestPurple h-5"></div>
+    </header>
+
+    <main class="imageBgMain flex text-white flex-col justify-end pb-20">
+        <h1 class="fontChanga text-5xl font-bold px-16 pb-2">MAS DE 10 AÑOS AL SERVICIO DE LAS MASCOTAS.</h1>
+        <span class="text-2xl pb-16 px-16">Contamos con un equipo altamente cualificado que te asesorará en todo lo relacionado con el cuidado y mantenimiento de tu mascota.</span>
+        <div class="flex mx-auto justify-center">
+            <a href="#articulosHome"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7"></path></svg></a>
+        </div>
+    </main>
+    <section id="middleHome">
+        <h2 id="articulosHome" class="fontChanga text-center text-5xl font-bold bgLightPurple h-20">¿Que estás buscando?</h2>
+        <div id="section" class="container flex mx-auto mt-10 mb-10 shadow-2xl rounded">
+            <div id="sectionFirstImageContainer" class="m-5 flex flex-col">
+                <a href="veterinaria.html"><img src="/img/imgIndex1.jpg" alt="imagen de perro"></a>
+                <a href="veterinaria.html" class="font-bold fontChanga text-3xl colPink text-center colDarkestPurple btnContactoHome"><span>VETERINARIA</span></a>
+            </div>
+            <div id="sectionSecondImageContainer" class="m-5 flex flex-col">
+                <a href="accesorios.html"><img src="/img/imgIndex3.jpg" alt="imagen de perro comiendo"></a>
+                <a href="accesorios.html" class="font-bold fontChanga text-3xl colPink text-center colDarkestPurple btnContactoHome"><span>ACCESORIOS</span></a>
+            </div>
+        </div>
+    </section>
+
+    <div class="h-20 mt-20 bgGray"></div>
+
+    <section class="mt-20 flex flex-row container mx-auto">
+        <div class="w-2/4 flex flex-col p-16">
+            <span class="font-bold fontChanga text-5xl">NUESTRA UBICACIÓN</span>
+            <p class="text-2xl">Estamos en el icónico barrio de Caballito, en Buenos Aires.
+            En nuestra tienda encontrarás una amplia y variada gama de productos en oferta para perros, gatos, aves y roedores.</p>
+            <a href="contacto.html" class="mt-10 colPink p-4 w-2/4 text-center font-bold text-2xl btnContactoHome"><span>CONTACTO</span></a>
+        </div>
+        <div class="w-2/4 flex flex-col p-16 items-center">
+            <div>
+                <svg class="w-16 h-16 colDarkestPurple" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            </div>
+            <span class="font-bold text-1xl p-3">RIO DE JANEIRO 300, BUENOS AIRES.</span>
+            <iframe class="shadow-2xl" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.686973275929!2d-58.432567884770116!3d-34.612076180457336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca429815227f%3A0x5d302e497c2cda87!2sR%C3%ADo%20de%20Janeiro%20300%2C%20C1405%20CCB%2C%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1616705640051!5m2!1ses-419!2sar" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+
+    <div class="h-8 mt-20 bgLightPurple"></div>
+    <footer class="bgDarkPurple h-16 items-center">
+        <nav class="flex justify-around text-white pt-5">
+            <div class="logo pl-10 hidden md:flex">
+                <svg class="w-6 h-6 text-white mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                <span>RIO DE JANEIRO 300, CAPITAL FEDERAL.</span>
+            </div>
+            <div class="navItems flex">
+                <a class="text-gray-400 mx-4" href="index.html">INICIO</a>
+                <a class="text-gray-400 mx-4" href="veterinaria.html">VETERINARIA</a>
+                <a class="text-gray-400 mx-4" href="accesorios.html">ACCESORIOS</a>
+                <a class="text-gray-400 mx-4" href="contacto.html">CONTACTO</a>
+            </div>
+        </nav>
+    </footer>
+
+
+
+
+
+</body>
+</html>

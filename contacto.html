@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/tailwind.min.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@200;400;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="flex flex-col md:flex-row justify-between items-center bgDarkPurple h-28 text-white shadow-2xl">
+            <div class="logo pl-10 flex items-center">
+                <a href="index.html"><img src="/img/logo1.png" width="75px" alt="logo"></a>
+                <a href="index.html"><span class="fontLogo mx-2 text-5xl">Franco's</span></a>
+            </div>
+            <div class="navItems mt-6 flex justify-between">
+                <div class="flex text-1xl md:text-2xl md:pr-10">
+                    <a class="fontChanga colLightBlue font-bold mx-4" href="index.html">INICIO</a>
+                    <a class="fontChanga colLightBlue font-bold mx-4" href="veterinaria.html">VETERINARIA</a>
+                    <a class="fontChanga colLightBlue font-bold mx-4" href="accesorios.html">ACCESORIOS</a>
+                    <a class="fontChanga colLightBlue font-bold mx-4" href="contacto.html">CONTACTO</a>
+                    <div class="flex flex-row justify-between">
+                        <a id="cart"><svg class="w-8 h-8 cursor-pointer" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></a>
+                        <div class="span font-bold text-xs relative" id="quanty"><div>
+                            <div id="cartContainer" class="hidden absolute">
+                                <table>
+                                    <thead>
+                                        <tr class="hidden" id="tHead">
+                                            <th>Cant.</th>
+                                            <th>Articulo</th>
+                                            <th>Precio</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="listItems">
+                                    </tbody>
+                                </table>
+                                <div class="flex justify-center">
+                                    <a href="#" id="buy" class="button u-full-width text-lg">El carrito esta vacio</a>
+                                </div>
+                            </div>       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        </nav>
+        <div class="bgDarkestPurple h-12 text-center">
+            <span class="fontChanga text-4xl text-white font-bold">CONTACTO</span>
+        </div>
+    </header>
+    <main id="mainVetAccesoriosContact" class="">
+        
+        <div class="contenedorForm flex flex-col mx-auto justify-center mt-20 md:w1000">
+            <div class="flex mx-auto justify-center">
+                <img src="/img/imgContacto.png" class="hidden md:flex shadow-2xl" width="500px" alt="">
+                <div class="shadow-2xl bgDarkPurple md:shadow-2xl">
+                    <form id="formContact" class="flex flex-col p-4" action="#">
+                        <label for="nombre"><input class="w-full mb-5 p-2" type="text" name="nombre" id="nameForm" placeholder="Tu nombre" required></label>
+                        <label for="email"><input class="w-full mb-5 p-2" type="email" name="correo" id="emailForm" placeholder="Correo electrónico" required></label>
+                        <div class="flex flex-col">
+                            <p id="petCheckboxTitle" class="font-bold text-white text-1xl">Mascota:</p>
+                            <div class="flex flex-col">
+                                <label class="labelWidth"><input type="checkbox" id="perro" value="perro"> <span class="text-white">Guau!</span></label>
+                                <label class="labelWidth"><input type="checkbox" id="gato" value="gato">  <span class="text-white"> Miau!</span></label>
+                                <label class="labelWidth"><input class="mb-3" type="checkbox" id="otro" value="otro">  <span class="text-white"> Otra</span></label>
+                            </div>
+                        </div>
+                        <textarea id="messageContent" name="mensaje" class="p-2 mb-5" cols="20" rows="6" placeholder="Escribinos tu consulta"></textarea>
+                        <input id="submitContact" type="button" class="p-2 btnSubmit cursor-not-allowed text-white bg-red-500" value="Hay campos incompletos o erróneos :(">
+                    </form>
+                </div>
+            </div>
+            <div class="mx-auto flex justify-center mt-10">
+                <p id="alert" class="h-10 text-xs p-1 md:text-base md:p-2 text-white text-center"></p>
+            </div>
+        </div>
+
+    </main>
+ 
+
+    <!--  -->
+    <div class="h-8 mt-20 bgLightPurple"></div>
+    <footer class="bgDarkPurple h-16 items-center">
+        <nav class="flex justify-around text-white pt-5">
+            <div class="logo pl-10 hidden md:flex">
+                <svg class="w-6 h-6 text-white mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                <span>RIO DE JANEIRO 300, CAPITAL FEDERAL.</span>
+            </div>
+            <div class="navItems flex">
+                <a class="text-gray-400 mx-4" href="index.html">INICIO</a>
+                <a class="text-gray-400 mx-4" href="veterinaria.html">VETERINARIA</a>
+                <a class="text-gray-400 mx-4" href="accesorios.html">ACCESORIOS</a>
+                <a class="text-gray-400 mx-4" href="contacto.html">CONTACTO</a>
+            </div>
+        </nav>
+    </footer>
+
+    <script src="/scripts/main.js"></script>
+</body>
+</html>

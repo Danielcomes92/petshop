@@ -1,0 +1,186 @@
+:root {
+    --black: #2B2B2B;
+    --gray: #D4D4D4;
+    --white: #ffffffce;
+    --lightBlue: #E5ECF4;
+    --lightPurple: #C3BEF7;
+    --purple: #8A4FFF;
+    --darkPurple: #7530FF;
+    --darkestPurple: #3B03A8;
+    --pink: #E21791;
+}
+
+.bgBlack {
+    background-color: var(--black);
+}
+.bgGray {
+    background-color: var(--gray);
+}
+.bgWhite {
+    background-color: var(--white);
+}
+.bgLightBlue {
+    background-color: var(--lightBlue);
+}
+.bgLightPurple {
+    background-color: var(--lightPurple);
+}
+.bgPurple {
+    background-color: var(--purple);
+}
+.bgDarkPurple {
+    background-color: var(--darkPurple);
+}
+.bgDarkestPurple {
+    background-color: var(--darkestPurple);
+}
+.bgPink {
+    background-color: var(--pink);
+}
+
+.fontChanga {
+    font-family: 'Changa', sans-serif;
+}
+.fontLogo {
+    font-family: 'Pacifico', cursive;
+}
+
+.colDarkestPurple {
+    color: var(--darkestPurple)
+}
+.colLightBlue {
+    color: var(--lightBlue);
+}
+.colPink {
+    color: var(--pink);
+}
+
+body {
+    margin: 0;
+    background-color: var(--white);
+}
+#quantyCart {
+    position: relative;
+    right: 57px;
+    bottom: 17px;
+}
+
+header {
+    height: 20%;
+}
+
+main {
+    min-height: 80%;
+}
+
+.imageBgMain {
+    background: linear-gradient(rgba(27, 27, 27, 0.1), rgba(0, 0, 0, 0.9)), url("/img/bgImage3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 90vh;
+}
+
+#middleHome {
+    min-height: 100vh;
+}
+
+.btnContactoHome {
+    border: 1px solid var(--pink);
+}
+
+#submitContacto {
+    color: var(--pink);
+    font-weight: bold;
+    background-color: white;
+}
+
+#submitContacto:hover {
+    color: white;
+    background-color: var(--pink);
+}
+
+.btnContactoHome:hover {
+    background-color: var(--pink);
+    color: white;
+    transition: all 0.4s;
+}
+
+#mainVetAccesoriosContact { 
+    min-height: 61vh;
+}
+
+.cardContainer {
+    max-width: 225px;
+    height: 350px;
+    max-height: 350px;
+    padding: 10px;
+    overflow: hidden;
+    border: 1px solid rgb(219, 219, 219);
+    background-color: white;
+}
+
+.imagen {
+    width: 50%;
+}
+
+.contenedorForm {
+    width: 75vw;
+    height: 50vh;
+}
+
+#formContact {
+    width: 500px;
+}
+
+.uno {
+    width: 50%;
+}
+
+.articleName {
+    height: 75px;
+    display: flex;
+    align-items: top;
+}
+
+.desc {
+    height: 225px;
+}
+
+.contCardInternal {
+    height: 175px;
+}
+
+#cartContainer {
+    width: 600px;
+    left: -600px;
+    top: 44.5px;
+    background-color: white;
+    color: black;
+    border: 0.5px solid lightblue;
+    padding: 4px;
+}
+
+.w10 {
+    width: 5%;
+}
+
+.w80 {
+    width: 60%;
+}
+
+.labelWidth {
+    width: 100px;
+}
+
+.w1000 {
+    width: 1000px;
+}
+
+.alertSuccess {
+    background-color: green;
+}
+
+.alertError {
+    background-color: rgb(200, 0, 0);
+}

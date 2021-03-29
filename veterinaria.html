@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/tailwind.min.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@200;400;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="flex flex-col md:flex-row justify-between items-center bgDarkPurple h-28 text-white shadow-2xl">
+            <div class="logo pl-10 flex items-center">
+                <a href="index.html"><img src="/img/logo1.png" width="75px" alt="logo"></a>
+                <a href="index.html"><span class="fontLogo mx-2 text-5xl">Franco's</span></a>
+            </div>
+            <div class="navItems mt-6 flex justify-between">
+                <div class="flex text-1xl md:text-2xl md:pr-10">
+                    <a class="fontChanga colLightBlue  text-xs md:text-base font-bold mx-4" href="index.html">INICIO</a>
+                    <a class="fontChanga colLightBlue  text-xs md:text-base font-bold mx-4" href="veterinaria.html">VETERINARIA</a>
+                    <a class="fontChanga colLightBlue  text-xs md:text-base font-bold mx-4" href="accesorios.html">ACCESORIOS</a>
+                    <a class="fontChanga colLightBlue  text-xs md:text-base font-bold mx-4" href="contacto.html">CONTACTO</a>
+                    <div class="flex flex-row justify-between">
+                        <a id="cart"><svg class="w-6 h-6 md:w-8 md:h-8 cursor-pointer" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></a>
+                        <div class="span font-bold text-xs relative" id="quanty"><div>
+                            <div id="cartContainer" class="hidden absolute">
+                                <table>
+                                    <thead>
+                                        <tr class="hidden" id="tHead">
+                                            <th>Restar</th>
+                                            <th>Cant.</th>
+                                            <th>Agregar</th>
+                                            <th>Articulo</th>
+                                            <th>Precio</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="listItems">
+                                    </tbody>
+                                </table>
+                                <div class="flex justify-center">
+                                    <a href="#" id="buy" class="button u-full-width text-lg">El carrito esta vacio</a>
+                                </div>
+                            </div>       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        </nav>
+        <div class="bgDarkestPurple h-12 text-center">
+            <span class="fontChanga text-2xl md:text-4xl text-white font-bold">VETERINARIA</span>
+        </div>
+    </header>
+    <div class="h-20 bgLightPurple">
+        <div class="filters md:pl-20 flex flex-row p-3">
+            <p class="font-bold flex items-center fontChanga text-base md:text-2xl">Ordenar por:</p>
+            <div class="p-4 items-center">
+                <label for="precio"><input class="form-check-input mx-2" type="checkbox" name="filterCheck" id="precio" value="precio"> <span class="font-bold">Precio</span></label>
+            </div>
+            <div class="p-4">
+                <label for="nombre"><input class="form-check-input mx-2" type="checkbox" name="filterCheck" id="nombre" value="nombre"><span class="font-bold">Nombre</span></label>
+            </div>
+        </div>
+    </div>
+    <main id="mainVetAccesoriosContact" class="mt-10">
+        <div class="container mx-auto">
+            <div id="cardsVetContainer" class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5"> </div>
+        </div>
+
+    </main>
+ 
+
+    <!--  -->
+    <div class="h-8 mt-20 bgLightPurple"></div>
+    <footer class="bgDarkPurple h-16 items-center">
+        <nav class="flex justify-around text-white pt-5">
+            <div class="logo pl-10 hidden md:flex">
+                <svg class="w-6 h-6 text-white mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                <span>RIO DE JANEIRO 300, CAPITAL FEDERAL.</span>
+            </div>
+            <div class="navItems flex">
+                <a class="text-gray-400 text-xs md:text-base mx-4" href="index.html">INICIO</a>
+                <a class="text-gray-400 text-xs md:text-base mx-4" href="veterinaria.html">VETERINARIA</a>
+                <a class="text-gray-400 text-xs md:text-base mx-4" href="accesorios.html">ACCESORIOS</a>
+                <a class="text-gray-400 text-xs md:text-base mx-4" href="contacto.html">CONTACTO</a>
+            </div>
+        </nav>
+    </footer>
+
+
+
+
+<script src="/scripts/main.js"></script>
+
+
+</body>
+</html>
