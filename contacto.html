@@ -5,10 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <link rel="stylesheet" href="./css/tailwind.min.css">
+    <link rel="stylesheet" href="./css/style.css">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    
     <link href="https://fonts.googleapis.com/css2?family=Changa:wght@200;400;700&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -26,6 +29,7 @@
                     <a class="fontChanga colLightBlue text-sm md:text-2xl font-bold mx-3 md:mx-4" href="contacto.html">CONTACTO</a>
                     <div class="flex flex-row justify-between">
                         <a id="cart"><svg class="w-10 h-10 cursor-pointer" fill="none" stroke="currentColor" viewbox="0 0 34 34" xmlns="http://www.w3.org/3000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></a>
+                        <span id="itemsInCart" class="w20">0</span>
                         <div class="span font-bold text-xs relative" id="quanty">
                             <div id="cartContainer" class="hidden absolute">
                                 <table>
@@ -66,7 +70,7 @@
                         <label for="email"><input class="w-full mb-5 p-2" type="email" name="correo" id="emailForm" placeholder="Correo electrónico" required></label>
                         <div class="flex flex-col">
                             <p id="petCheckboxTitle" class="font-bold text-white text-1xl">Mascota:</p>
-                            <div class="flex flex-col">
+                            <div id="animalCheckbox" class="flex flex-col">
                                 <label class="labelWidth"><input type="checkbox" id="perro" value="perro"> <span class="text-white">Guau!</span></label>
                                 <label class="labelWidth"><input type="checkbox" id="gato" value="gato">  <span class="text-white"> Miau!</span></label>
                                 <label class="labelWidth"><input class="mb-3" type="checkbox" id="otro" value="otro">  <span class="text-white"> Otra</span></label>
@@ -101,6 +105,7 @@
         </nav>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <script src="/scripts/main.js"></script>
 </body>
 </html>

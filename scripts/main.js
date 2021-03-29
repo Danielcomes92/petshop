@@ -15,6 +15,7 @@ function App(data) {
     if(localStorage.getItem('carrito')) {
         cart = JSON.parse(localStorage.getItem('carrito'));
     }
+
     articlesToys = [];
     articlesPharma = [];
 
@@ -22,6 +23,7 @@ function App(data) {
     const vetePage = document.querySelector('#cardsVetContainer');
     const accesoriesPage = document.querySelector('#cardsAccContainer');
     const arraySelected = vetePage ? articlesPharma : articlesToys;
+    const btnEndShopping = document.querySelector('#buy');
 
     const articlesArray = data.response;
         
@@ -73,7 +75,6 @@ function App(data) {
             openDesc.addEventListener('click', () => {
                 const description = document.querySelector(`div[data-desc="${article._id}"]`);
                 const containerImgName = document.querySelector(`div[data-container="${article._id}"]`);
-                
                 if(description.classList.contains('hidden')) {
                     description.classList.remove('hidden')
                     containerImgName.classList.add('hidden')
@@ -85,9 +86,8 @@ function App(data) {
 
             const addProduct = document.getElementById(article._id);
             addProduct.addEventListener('click', (e) => {
-                articleInCart(arraySelected, e.target.id, 'render')
+                articlesCart(arraySelected, e.target.id, 'render')
             });
-
         });
     }
 
@@ -109,26 +109,25 @@ function App(data) {
 
      })
 
-    function articleInCart(array, id, action) {
+    function articlesCart(array, id, action) {
         if(action === 'render') {
             array.map(article => {
                 if(article._id === ((id).toString())) {
                     if(cart.indexOf(article) === -1) {
                         article.cantidad = 1;
                         cart.push(article)
+                        notify('Articulo agregado correctamente', 2000, 'success')
+                    } else {
+                        notify('Este articulo ya esta en el carrito', 2000, 'error')
                     }
                 }
             });
         }
-
         if(action === 'renderFiltered') {
             cart = cart.filter(article => article._id !== ((id).toString()))
+            notify('Eliminaste el articulo', 2000, 'warning')
         }
-        
-        getTotal();
-        checkCartLength();
-        renderProducts(cart);
-        localStorage.setItem('carrito', JSON.stringify(cart))
+        renderCart()
     }
 
     const tHeadElements = document.querySelector('#tHead');
@@ -147,7 +146,8 @@ function App(data) {
             totalItems += article.cantidad
             totalPurchase += article.cantidad * article.precio
         });
-        document.querySelector('#buy').innerHTML = `${totalItems > 0 ? `Finalizar compra: (${totalItems} prod.  $${totalPurchase})` : 'El carrito esta vacio' }`;
+        btnEndShopping.innerHTML = `${totalItems > 0 ? `Finalizar compra: (${totalItems} prod.  $${totalPurchase})` : 'El carrito esta vacio' }`;
+        document.querySelector('#itemsInCart').innerHTML = totalItems;
     }
 
     function renderProducts(cart) {
@@ -175,10 +175,7 @@ function App(data) {
                         } else if(e.target.getAttribute('data-thisArticle') === 'more') {
                             article.cantidad++;
                         }
-                        checkCartLength();
-                        getTotal();
-                        renderProducts(cart);
-                        localStorage.setItem('carrito', JSON.stringify(cart));
+                        renderCart();
                     });
                 });
             }
@@ -186,60 +183,74 @@ function App(data) {
             const removeItem = document.querySelector(`div[data-remove="${article._id}"]`);
             removeItem.addEventListener('click', (e) => {
                 let id = e.target.getAttribute('data-remove');
-                articleInCart(arraySelected, id, 'renderFiltered')
+                articlesCart(arraySelected, id, 'renderFiltered')
             });
         });
+    } renderCart();
+    
+
+    function renderCart() {
+        checkCartLength();
+        getTotal();
+        renderProducts(cart);
+        localStorage.setItem('carrito', JSON.stringify(cart));
     }
-    checkCartLength();
-    getTotal();
-    renderProducts(cart);
-    localStorage.setItem('carrito', JSON.stringify(cart));
+    
     
     if(contactPage) {
-        document.querySelector('#formContact').addEventListener('keyup', validateForm)
+        document.querySelector('#formContact').addEventListener('keyup', () => {
+            const inputName = document.querySelector('#nameForm').value;
+            const inputEmail = document.querySelector('#emailForm').value;
+            const checkboxChecked = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'));
+            const messageTextarea = document.querySelector('#messageContent').value;
+            const inputWrong = (Array.from(inputName)).some(Number) || inputName === '' || inputEmail === '' || checkboxChecked.length <= 0 || messageTextarea.length === 0;
+            
+            if(inputWrong) {
+                contactPage.value = 'Hay campos incompletos o erróneos :('
+                contactPage.classList.add('bg-red-500', 'cursor-not-allowed')
+                contactPage.classList.remove('bg-green-500')
+            } else {
+                contactPage.value = 'Enviar consulta!'
+                contactPage.classList.add('bg-green-500', 'cursor-pointer')
+                contactPage.classList.remove('cursor-not-allowed')
+            }
+        });
+        
+        contactPage.addEventListener('click', () => {
+            const inputName = document.querySelector('#nameForm').value;
+            const inputEmail = document.querySelector('#emailForm').value;
+            const checkboxChecked = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'));
+            const messageTextarea = document.querySelector('#messageContent').value;
+            const inputWrong = (Array.from(inputName)).some(Number) || inputName === '' || inputEmail === '' || checkboxChecked.length <= 0 || messageTextarea.length === 0;
+            if(!inputWrong) {
+                notify(`Tu consulta ha sido enviada correctamente!`, 2000, 'success')
+                contactPage.value = 'Hay campos incompletos o erróneos :('
+                contactPage.classList.add('bg-red-500', 'cursor-not-allowed')
+                contactPage.classList.remove('bg-green-500')
+                document.querySelector('#formContact').reset();
+            }
+        });
     }
+    
 
-    function validateForm() {
-        const inputName = document.querySelector('#nameForm').value;
-        const inputEmail = document.querySelector('#emailForm').value;
-        const checkboxChecked = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'));
-        const messageTextarea = document.querySelector('#messageContent').value;
+    let notyf = new Notyf();
+    function notify(message, duration, type) {
+        notyf.success({
+            message: message,
+            duration: duration,
+            type: type,
+            background: type === 'warning' ? 'orange' : ''
+        });
+    }
+    
 
-        inputWrong = (Array.from(inputName)).some(Number) || inputName === '' || inputEmail === '' || checkboxChecked.length <= 0 || messageTextarea.length === 0;
-
-        if(inputWrong) {
-            contactPage.value = 'Hay campos incompletos o erróneos :('
-            contactPage.classList.add('bg-red-500', 'cursor-not-allowed')
-            contactPage.classList.remove('bg-green-500')
-        } else {
-            contactPage.value = 'Enviar consulta!'
-            contactPage.classList.add('bg-green-500', 'cursor-pointer')
-            contactPage.classList.remove('cursor-not-allowed')
-            contactPage.addEventListener('click', () => {
-                if(inputWrong) {
-                    contactPage.value = 'Hay campos incompletos o erróneos :('
-                    contactPage.classList.add('bg-red-500', 'cursor-not-allowed')
-                    contactPage.classList.remove('bg-green-500')
-                } else {
-                    showAlert(`${inputName} tu consulta ha sido enviada correctamente!`)
-                    contactPage.classList.add('bg-red-500', 'cursor-not-allowed')
-                    contactPage.classList.remove('bg-green-500')
-                    contactPage.value = 'Hay campos incompletos o erróneos :('
-                    document.querySelector('#formContact').reset();
-                }
-            });
+    btnEndShopping.addEventListener('click', endShopping);
+    function endShopping() {
+        if(cart.length > 0) {
+            cart = [];
+            renderCart();
+            notify('Muchas gracias por tu compra, esperamos disfrutes los articulos que elegiste!', 6000, 'success');
         }
-    }
-
-    function showAlert(message) {
-        const p = document.querySelector('#alert');
-
-        p.classList.add('alertSuccess');
-        p.innerHTML = message;
-        setTimeout(() => {
-            p.classList.remove('alertSuccess');
-            window.location.replace("http://127.0.0.1:5500/contacto.html");
-        }, 4000);
     }
 
 }

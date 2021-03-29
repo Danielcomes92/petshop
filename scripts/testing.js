@@ -103,3 +103,37 @@ renderProducts(cart)
 
 
  */
+
+
+function showAlert(message) {
+    const p = document.querySelector('#alert');
+    p.classList.add('alertSuccess');
+    p.innerHTML = message;
+    setTimeout(() => {
+        p.classList.remove('alertSuccess');
+        window.location.replace("http://127.0.0.1:5500/contacto.html");
+    }, 4000);
+}
+
+
+
+
+
+if(inputWrong) {
+    contactPage.value = 'Hay campos incompletos o erróneos :('
+    contactPage.classList.add('bg-red-500', 'cursor-not-allowed')
+    contactPage.classList.remove('bg-green-500')
+} else {
+    contactPage.value = 'Enviar consulta!'
+    contactPage.classList.add('bg-green-500', 'cursor-pointer')
+    contactPage.classList.remove('cursor-not-allowed')
+    contactPage.addEventListener('click', () => {
+        if(!inputWrong) {
+            notifyContact(`${inputName} tu consulta ha sido enviada correctamente!`)
+            contactPage.value = 'Hay campos incompletos o erróneos :('
+            contactPage.classList.add('bg-red-500', 'cursor-not-allowed')
+            contactPage.classList.remove('bg-green-500')
+            document.querySelector('#formContact').reset();
+        }
+    });
+}

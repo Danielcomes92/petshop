@@ -185,3 +185,7 @@ main {
 .alertError {
     background-color: rgb(200, 0, 0);
 }
+
+.w20 {
+    width: 20px;
+}
