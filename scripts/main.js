@@ -39,7 +39,7 @@ function App(data) {
             let div = document.createElement('div')
             div.innerHTML = `
             <div class="rounded overflow-hidden shadow-lg hover:shadow-xl flex flex-col justify-between">
-                <div data-desc=${article._id} class="hidden containerImgName contCardInternal text-xs p-4 pt-6 text-justify">
+                <div data-desc=${article._id} class="hidden containerImgName contCardInternal text-sm p-4 pt-6 text-justify">
                     ${article.descripcion}
                 </div>
                 <div data-container=${article._id} class="containerImgName contCardInternal">
