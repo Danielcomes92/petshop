@@ -38,8 +38,6 @@ function App(data) {
         }
     });
 
-    // <span data-stock="stock${article._id}" id="availability" class="${article.stock > 5 ? 'hidden' : 'absolute top-0 right-0 p-1 bg-red-700 text-white text-sm font-semibold'}">Ultimas unidades!</span> </div>
-
     function insertProducts(array, container) {
         array.map(article => {
             let div = document.createElement('div')
@@ -52,9 +50,9 @@ function App(data) {
                     <div class="flex justify-center">
                         <div class="">
                             <div class="flex justify-center md:pt-12">
-                                <img class="wFixed50" src="${article.imagen}" alt="${article.tipo} de petshop en exhibicion">
+                                <img class="w-1/2" src="${article.imagen}" alt="${article.tipo} de petshop en exhibicion">
                             </div>
-        
+                            <span data-stock="stock${article._id}" id="availability" class="${article.stock > 5 ? 'hidden' : 'p-1 bg-red-700 text-white text-sm font-semibold'}">Ultimas unidades!</span> </div>
                         </div>
                     </div>
                     <div class="sm:mt-20 flex justify-around border-t-2">
