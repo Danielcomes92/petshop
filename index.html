@@ -5,15 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/popbox.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <link rel="stylesheet" href="./css/tailwind.min.css">
-
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Changa:wght@200;400;700&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <nav class="flex flex-col md:flex-row justify-between items-center bgDarkPurple h-28 text-white shadow-2xl">
+        <nav class="flex flex-col md:flex-row justify-between items-center bgDarkPurple h-28 text-white">
             <div class="logo md:pl-10 flex items-center">
                 <a href="index.html"><img src="/img/logo1.png" width="75px" alt="logo"></a>
                 <a href="index.html"><span class="fontLogo mx-2 text-5xl">Franco's</span></a>
@@ -26,33 +27,48 @@
                     <a class="fontChanga colLightBlue text-sm md:text-2xl font-bold mx-3 md:mx-4" href="contacto.html">CONTACTO</a>
                     <div class="flex flex-row justify-between">
                         <a id="cart"><svg class="w-10 h-10 cursor-pointer" fill="none" stroke="currentColor" viewbox="0 0 34 34" xmlns="http://www.w3.org/3000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></a>
-                        <div class="span font-bold text-xs relative" id="quanty">
-                            <div id="cartContainer" class="hidden absolute">
-                                <table>
-                                    <thead>
-                                        <tr class="hidden" id="tHead">
-                                            <th>Restar</th>
-                                            <th>Cant.</th>
-                                            <th>Agregar</th>
-                                            <th>Articulo</th>
-                                            <th>Precio</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="listItems">
-                                    </tbody>
-                                </table>
-                                <div class="flex justify-center">
-                                    <a href="#" id="buy" class="button u-full-width text-lg">El carrito esta vacio</a>
-                                </div>
-                            </div>       
-                        </div>
+                        <span id="itemsInCart" class="w20">0</span>
+                        <div class="span font-bold text-xs relative" id="quanty"></div>
                     </div>
                 </div>
             </div>
         </nav>
         <div class="bgDarkestPurple h-5"></div>
     </header>
+
+    <div data-popbox-id="mypopbox1" class="popbox">
+        <div class="popbox_container">
+            <div class="py-2"> 
+                <div class="max-w-md mx-auto bg-gray-100 shadow-lg rounded-lg md:max-w-5xl">
+                    <div class="md:flex ">
+                        <div class="w-full pb-4 px-5 py-2">
+                            <div class="md:grid md:grid-cols-2 gap-2 ">
+                                <div id="innerContainer" class="col-span-2 pb-5">
+                                    <div class="flex justify-end">
+                                        <button data-popbox-close="mypopbox1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 focus:outline-none" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                        </button>
+                                    </div> 
+                                    <h1 class="text-xl font-medium ">Carrito de compras</h1>
+                                    <!-- start item -->
+                                    <div id="listItems"></div>
+                                    <!-- end item -->
+                                    <div class="flex justify-end items-center mt-6 pt-6 border-t">
+                                    <div class="wFixed150">
+                                        <span class="text-sm font-medium text-gray-400 mr-1 wFixed75">Subtotal:</span> 
+                                        <span id="totalCart" class="text-lg font-bold text-gray-800 wFixed75"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
     <main class="imageBgMain flex text-white flex-col justify-end pb-20">
         <h1 class="fontChanga text-5xl font-bold px-16 pb-2">MAS DE 10 AÑOS AL SERVICIO DE LAS MASCOTAS.</h1>
@@ -112,7 +128,8 @@
 
 
 
-
-
+    <script src="/scripts/popbox.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="/scripts/main.js"></script>
 </body>
 </html>

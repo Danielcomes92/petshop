@@ -42,7 +42,7 @@ function App(data) {
         array.map(article => {
             let div = document.createElement('div')
             div.innerHTML = `
-            <div class="rounded overflow-hidden shadow-lg hover:shadow-xl flex flex-col justify-between">
+            <div class="rounded overflow-hidden shadow-md hover:shadow-lg flex flex-col justify-between">
                 <div data-desc=${article._id} class="hidden containerImgName contCardInternal text-sm p-4 pt-6 text-justify">
                     ${article.descripcion}
                 </div>
@@ -132,8 +132,10 @@ function App(data) {
             totalItems += article.cantidad
             totalPurchase += article.cantidad * article.precio
         });
-        document.querySelector('#totalCart').innerHTML = `$${totalPurchase}`;
-        document.querySelector('#itemsInCart').innerHTML = totalItems;
+        if(document.querySelector('#totalCart') && document.querySelector('#itemsInCart')) {
+            document.querySelector('#totalCart').innerHTML = `$${totalPurchase}`;
+            document.querySelector('#itemsInCart').innerHTML = totalItems;
+        }
         
         const innerContainer = document.querySelector('#innerContainer');
         const buttonPurchase = document.createElement('button');
@@ -146,68 +148,73 @@ function App(data) {
             buttonPurchase.innerText = 'El carrito esta vacio'
         }
         buttonPurchase.setAttribute('id', 'btnEndShopping');
-        innerContainer.removeChild(innerContainer.lastChild)
-        innerContainer.appendChild(buttonPurchase)
-        buttonPurchase.addEventListener('click', () => {
-            if(totalItems > 0) {
-                cart = [];
-                renderCart();
-                popbox.close('mypopbox1');
-                notify('Muchas gracias por tu compra, esperamos disfrutes los articulos que elegiste!', 10000, 'success');
-            }
-        });
+        
+        if(innerContainer && buttonPurchase) {
+            innerContainer.removeChild(innerContainer.lastChild)
+            innerContainer.appendChild(buttonPurchase)
+            buttonPurchase.addEventListener('click', () => {
+                if(totalItems > 0) {
+                    cart = [];
+                    renderCart();
+                    popbox.close('mypopbox1');
+                    notify('Muchas gracias por tu compra, esperamos disfrutes los articulos que elegiste!', 10000, 'success');
+                }
+            });
+        }
     }
 
     function renderProducts(cart) {
         const listItems = document.querySelector('#listItems');
-        listItems.innerHTML = ''
-        cart.map(article => {
-            let div = document.createElement('div');
-            div.innerHTML = `
-            <div class="flex flex-col mt-6 pt-2">
-                <span class="text-xs md:mb-0 md:text-base font-medium">${article.nombre}</span>
-                <span class="text-xs font-light text-gray-700">#${article.tipo}</span>
-            </div>
-            <div class="flex justify-between items-center">
-                <div>
-                    <img src="${article.imagen}" width="60" class="rounded-full ">
+        if(listItems) {
+            listItems.innerHTML = ''
+            cart.map(article => {
+                let div = document.createElement('div');
+                div.innerHTML = `
+                <div class="flex flex-col mt-6 pt-2">
+                    <span class="text-xs md:mb-0 md:text-base font-medium">${article.nombre}</span>
+                    <span class="text-xs font-light text-gray-700">#${article.tipo}</span>
                 </div>
-                <div class="flex justify-center items-center">
-                    <div class="pr-4 flex wFixed100">
-                        <span class="font-semibold mr-1 cursor-pointer" data-thisArticle="minus" name="btn${article._id}">-</span> 
-                        <span type="text" class="focus:outline-none bg-gray-100 text-center border h-6 w-8 rounded text-sm px-2 md:mx-2" data-quanty="${article._id}">${article.cantidad}</span>
-                        <span class="font-semibold ml-1 cursor-pointer" data-thisArticle="more" name="btn${article._id}">+</span> 
+                <div class="flex justify-between items-center">
+                    <div>
+                        <img src="${article.imagen}" width="60" class="rounded-full ">
                     </div>
-                    <div class="flex wFixed100">
-                        <span class="text-xs md:text-base ml-2 font-medium wFixed50">$${article.precio * article.cantidad}</span>
-                        <div class="text-xs md:text-base ml-2 font-bold text-black cursor-pointer" data-remove="${article._id}">X</div> 
+                    <div class="flex justify-center items-center">
+                        <div class="pr-4 flex wFixed100">
+                            <span class="font-semibold mr-1 cursor-pointer" data-thisArticle="minus" name="btn${article._id}">-</span> 
+                            <span type="text" class="focus:outline-none bg-gray-100 text-center border h-6 w-8 rounded text-sm px-2 md:mx-2" data-quanty="${article._id}">${article.cantidad}</span>
+                            <span class="font-semibold ml-1 cursor-pointer" data-thisArticle="more" name="btn${article._id}">+</span> 
+                        </div>
+                        <div class="flex wFixed100">
+                            <span class="text-xs md:text-base ml-2 font-medium wFixed50">$${article.precio * article.cantidad}</span>
+                            <div class="text-xs md:text-base ml-2 font-bold text-black cursor-pointer" data-remove="${article._id}">X</div> 
+                        </div>
+                        <div> <i class="fa fa-close text-xs font-medium"></i> </div>
                     </div>
-                    <div> <i class="fa fa-close text-xs font-medium"></i> </div>
                 </div>
-            </div>
-            `;
-            listItems.appendChild(div);
-    
-            if(document.getElementsByName(`btn${article._id}`)) {
-                const currentArticle = Array.from(document.getElementsByName(`btn${article._id}`));
-                currentArticle.map(btn => {
-                    btn.addEventListener('click', (e) => {
-                        if(e.target.getAttribute('data-thisArticle') === 'minus' && article.cantidad > 1) {
-                            article.cantidad--;
-                        } else if(e.target.getAttribute('data-thisArticle') === 'more') {
-                            article.cantidad++;
-                        }
-                        renderCart();
+                `;
+                listItems.appendChild(div);
+        
+                if(document.getElementsByName(`btn${article._id}`)) {
+                    const currentArticle = Array.from(document.getElementsByName(`btn${article._id}`));
+                    currentArticle.map(btn => {
+                        btn.addEventListener('click', (e) => {
+                            if(e.target.getAttribute('data-thisArticle') === 'minus' && article.cantidad > 1) {
+                                article.cantidad--;
+                            } else if(e.target.getAttribute('data-thisArticle') === 'more') {
+                                article.cantidad++;
+                            }
+                            renderCart();
+                        });
                     });
+                }
+    
+                const removeItem = document.querySelector(`div[data-remove="${article._id}"]`);
+                removeItem.addEventListener('click', (e) => {
+                    let id = e.target.getAttribute('data-remove');
+                    articlesCart(arraySelected, id, 'renderFiltered')
                 });
-            }
-
-            const removeItem = document.querySelector(`div[data-remove="${article._id}"]`);
-            removeItem.addEventListener('click', (e) => {
-                let id = e.target.getAttribute('data-remove');
-                articlesCart(arraySelected, id, 'renderFiltered')
-            });
-        });
+            });  
+        }
     } renderCart();
     
     function renderCart() {

@@ -74,6 +74,22 @@ main {
     min-height: 80%;
 }
 
+#bannerAccesories {
+    background-image: url('/img/bannerAccesories.png');
+    background-color: white;
+    background-position: center;
+    margin: auto;
+    background-repeat: no repeat;
+}
+
+#bannerPharma {
+    background-image: url('/img/petPharmacy.png');
+    background-color: white;
+    background-position: center;
+    margin: auto;
+    background-repeat: no repeat;
+}
+
 .imageBgMain {
     background: linear-gradient(rgba(27, 27, 27, 0.1), rgba(0, 0, 0, 0.9)), url("/img/bgImage3.jpg");
     background-size: cover;
@@ -151,16 +167,6 @@ main {
 .contCardInternal {
     height: 175px;
 }
-
-/* #cartContainer {
-    width: 600px;
-    left: -600px;
-    top: 44.5px;
-    background-color: white;
-    color: black;
-    border: 0.5px solid lightblue;
-    padding: 4px;
-} */
 
 .w10 {
     width: 5%;
