@@ -63,57 +63,31 @@
                     <div class="md:flex ">
                         <div class="w-full pb-4 px-5 py-2">
                             <div class="md:grid md:grid-cols-2 gap-2 ">
-                                <div class="col-span-2 pb-5">
+                                <div id="innerContainer" class="col-span-2 pb-5">
                                     <div class="flex justify-end">
                                         <button data-popbox-close="mypopbox1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 focus:outline-none" fill="none" viewbox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                 </svg>
                                         </button>
                                     </div> 
                                     <h1 class="text-xl font-medium ">Carrito de compras</h1>
                                     <!-- start item -->
-                                    <div id="listItems">
-
-                                        
-                                    </div>
+                                    <div id="listItems"></div>
                                     <!-- end item -->
-
                                     <div class="flex justify-end items-center mt-6 pt-6 border-t">
-                                        <div>
-                                            <span class="text-sm font-medium text-gray-400 mr-1">Subtotal:</span> 
-                                            <span class="text-lg font-bold text-gray-800 "> $24.90</span> </div>
-                                        </div>
-                                    <button class="h-12 w-full mt-5 bgDarkPurple rounded focus:outline-none transition ease-in-out duration-200 text-white hover:bg-purple-700">Finalizar compra</button>
+                                    <div class="wFixed150">
+                                        <span class="text-sm font-medium text-gray-400 mr-1 wFixed75">Subtotal:</span> 
+                                        <span id="totalCart" class="text-lg font-bold text-gray-800 wFixed75"></span></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- <div id="cartContainer" class="">
-                <table>
-                    <thead>
-                        <tr id="tHead">
-                            <th>Restar</th>
-                            <th>Cant.</th>
-                            <th>Agregar</th>
-                            <th>Articulo</th>
-                            <th>Precio</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody id="listItems">
-                    </tbody>
-                </table>
-                <div class="flex justify-center">
-                    <a href="#" id="buy" class="button u-full-width text-lg">El carrito esta vacio</a>
-                </div>
-            </div>        -->
         </div>
     </div>
-    
     
     <div class="h-8 mt-20 bgLightPurple"></div>
     <footer class="bgDarkPurple h-16 items-center">
@@ -131,12 +105,8 @@
         </nav>
     </footer>
 
-
-
     <script src="/scripts/popbox.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <script src="/scripts/main.js"></script>
-
-
 </body>
 </html>

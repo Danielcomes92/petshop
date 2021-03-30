@@ -190,10 +190,19 @@ main {
     width: 20px;
 }
 
+.wFixed150 {
+    width: 150px;
+}
+
 .wFixed100 {
     width: 100px;
+}
+
+.wFixed75 {
+    width: 75px;
 }
 
 .wFixed50 {
     width: 50px;
 }
+

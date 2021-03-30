@@ -18,15 +18,17 @@ function App(data) {
 
     articlesToys = [];
     articlesPharma = [];
-
+    
+    const articlesArray = data.response;
     const contactPage = document.querySelector('#submitContact');
     const vetePage = document.querySelector('#cardsVetContainer');
     const accesoriesPage = document.querySelector('#cardsAccContainer');
     const arraySelected = vetePage ? articlesPharma : articlesToys;
-    const btnEndShopping = document.querySelector('#buy');
-
-    const articlesArray = data.response;
-        
+    const notyf = new Notyf();
+    const popbox = new Popbox({
+        blur:true,
+        overlay:true,
+    });
     
     articlesArray.map(article => {
         if(article.tipo === 'Juguete') {
@@ -98,16 +100,8 @@ function App(data) {
     }
 
     document.querySelector('#cart').addEventListener('click', () => {
-        checkCartLength();
         getTotal();
         popbox.open('mypopbox1');
-        // const cartContainer = document.querySelector('#cartContainer')
-        //  if(cartContainer.classList.contains('hidden')) {
-        //     cartContainer.classList.remove('hidden')
-        //  } else {
-        //     cartContainer.classList.add('hidden')
-        //  }
-
      })
 
     function articlesCart(array, id, action) {
@@ -131,15 +125,6 @@ function App(data) {
         renderCart()
     }
 
-    const tHeadElements = document.querySelector('#tHead');
-    function checkCartLength() {
-        // if(cart.length > 0) {
-        //     tHeadElements.classList.remove('hidden')
-        // } else {
-        //     tHeadElements.classList.add('hidden')
-        // }
-    }
-
     function getTotal() {
         let totalItems = 0
         let totalPurchase = 0;
@@ -147,8 +132,30 @@ function App(data) {
             totalItems += article.cantidad
             totalPurchase += article.cantidad * article.precio
         });
-        // btnEndShopping.innerHTML = `${totalItems > 0 ? `Finalizar compra: (${totalItems} prod.  $${totalPurchase})` : 'El carrito esta vacio' }`;
-        // document.querySelector('#itemsInCart').innerHTML = totalItems;
+        document.querySelector('#totalCart').innerHTML = `$${totalPurchase}`;
+        document.querySelector('#itemsInCart').innerHTML = totalItems;
+        
+        const innerContainer = document.querySelector('#innerContainer');
+        const buttonPurchase = document.createElement('button');
+
+        if(totalItems > 0) {
+            buttonPurchase.className = 'h-12 w-full mt-5 bgDarkPurple rounded focus:outline-none transition ease-in-out duration-200 text-white hover:bg-purple-700'
+            buttonPurchase.innerText = 'Finalizar compra'
+        } else {
+            buttonPurchase.className = 'h-12 w-full mt-5 cursor-not-allowed text-gray-400 border-gray-300 border rounded focus:outline-none'
+            buttonPurchase.innerText = 'El carrito esta vacio'
+        }
+        buttonPurchase.setAttribute('id', 'btnEndShopping');
+        innerContainer.removeChild(innerContainer.lastChild)
+        innerContainer.appendChild(buttonPurchase)
+        buttonPurchase.addEventListener('click', () => {
+            if(totalItems > 0) {
+                cart = [];
+                renderCart();
+                popbox.close('mypopbox1');
+                notify('Muchas gracias por tu compra, esperamos disfrutes los articulos que elegiste!', 10000, 'success');
+            }
+        });
     }
 
     function renderProducts(cart) {
@@ -203,15 +210,12 @@ function App(data) {
         });
     } renderCart();
     
-
     function renderCart() {
-        checkCartLength();
         getTotal();
         renderProducts(cart);
         localStorage.setItem('carrito', JSON.stringify(cart));
     }
-    
-    
+     
     if(contactPage) {
         document.querySelector('#formContact').addEventListener('keyup', () => {
             const inputName = document.querySelector('#nameForm').value;
@@ -246,9 +250,7 @@ function App(data) {
             }
         });
     }
-    
 
-    let notyf = new Notyf();
     function notify(message, duration, type) {
         notyf.success({
             message: message,
@@ -257,26 +259,6 @@ function App(data) {
             background: type === 'warning' ? 'orange' : ''
         });
     }
-    
-
-    // btnEndShopping.addEventListener('click', endShopping);
-    function endShopping() {
-        if(cart.length > 0) {
-            cart = [];
-            renderCart();
-            notify('Muchas gracias por tu compra, esperamos disfrutes los articulos que elegiste!', 6000, 'success');
-        }
-    }
-
-    var popbox = new Popbox({
-        blur:true,
-        overlay:true,
-    });
-
-    
-
-
-
 
 
 
