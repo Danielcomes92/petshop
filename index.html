@@ -34,10 +34,10 @@
                             </svg>
                         </a>
                         <span id="itemsInCart" class="w20 hidden md:inline-block">0</span>
-                        <div class="md:hidden h-8 w-8 mr-2 ml-2">
+                        <div id="openMobileNav" class="md:hidden h-8 w-8 mr-2 ml-2">
                             <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
-                              </svg>
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -78,6 +78,22 @@
             </div>
         </div>
     </div>
+
+    <div data-popbox-id="mypopbox2" class="popbox">
+        <div class="popbox_containerMobile">
+            <div class="flex flex-col justify-between">
+                <button data-popbox-close="mypopbox2" class="focus:outline-none flex justify-end">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 focus:outline-none" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </button>
+                <a class="text-1xl p-3" href="index.html">INICIO</a>
+                <a class="text-1xl p-3 border-t" href="veterinaria.html">VETERINARIA</a>
+                <a class="text-1xl p-3 border-t" href="accesorios.html">ACCESORIOS</a>
+                <a class="text-1xl p-3 border-t" href="contacto.html">CONTACTO</a>
+            </div>
+        </div>
+    </div>
     
     <main class="imageBgMain flex text-white flex-col justify-end pb-20">
         <h1 class="fontChanga text-2xl md:text-5xl font-bold px-4 md:px-16 pb-2">MAS DE 10 AÑOS AL SERVICIO DE LAS MASCOTAS.</h1>
@@ -86,21 +102,21 @@
             <a href="#articulosHome"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7"></path></svg></a>
         </div>
     </main>
-    <section class="md:middleHome">
+    <section class="md:h-screen">
         <h2 id="articulosHome" class="fontChanga text-center text-2xl md:text-5xl font-bold bgLightPurple md:h-20">¿Que estás buscando?</h2>
-        <div id="section" class="container flex flex-col md:flex-row mx-auto mt-10 mb-10 md:shadow-2xl rounded">
+        <div id="section" class="container flex flex-col md:flex-row mx-auto md:mt-20 md:shadow-2xl rounded">
             <div id="sectionFirstImageContainer" class="m-5 flex flex-col">
                 <a href="veterinaria.html"><img src="/img/imgIndex1.jpg" alt="imagen de perro"></a>
-                <a href="veterinaria.html" class="font-bold fontChanga text-3xl colPink text-center colDarkestPurple btnContactoHome"><span>VETERINARIA</span></a>
+                <a href="veterinaria.html" class="font-bold fontChanga text-2xl md:text-3xl colPink text-center colDarkestPurple btnContactoHome"><span>VETERINARIA</span></a>
             </div>
             <div id="sectionSecondImageContainer" class="m-5 flex flex-col">
                 <a href="accesorios.html"><img src="/img/imgIndex3.jpg" alt="imagen de perro comiendo"></a>
-                <a href="accesorios.html" class="font-bold fontChanga text-3xl colPink text-center colDarkestPurple btnContactoHome"><span>ACCESORIOS</span></a>
+                <a href="accesorios.html" class="font-bold fontChanga text-2xl md:text-3xl colPink text-center colDarkestPurple btnContactoHome"><span>ACCESORIOS</span></a>
             </div>
         </div>
     </section>
 
-    <div class="h-20 mt-20 bgGray"></div>
+    <div class="h-8 mt-10 md:mt-0 md:h-64 bgGray"></div>
 
     <section class="mt-20 flex flex-col md:flex-row md:container mx-auto">
         <div class="md:w-2/4 flex flex-col px-8 md:p-16">
@@ -114,7 +130,7 @@
                 <svg class="md:w-16 md:h-16 colDarkestPurple" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
             </div>
             <span class="font-bold text-1xl p-3">RIO DE JANEIRO 300, BUENOS AIRES.</span>
-            <iframe class="shadow-2xl" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.686973275929!2d-58.432567884770116!3d-34.612076180457336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca429815227f%3A0x5d302e497c2cda87!2sR%C3%ADo%20de%20Janeiro%20300%2C%20C1405%20CCB%2C%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1616705640051!5m2!1ses-419!2sar" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe class="shadow-2xl" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.686973275929!2d-58.432567884770116!3d-34.612076180457336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca429815227f%3A0x5d302e497c2cda87!2sR%C3%ADo%20de%20Janeiro%20300%2C%20C1405%20CCB%2C%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1616705640051!5m2!1ses-419!2sar" width="320" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
 

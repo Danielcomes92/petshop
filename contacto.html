@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 </head>
-<body>
+<body id="wrapper">
     <header>
         <nav class="flex flex-row justify-between items-center bgDarkPurple h-28 text-white">
             <div class="logo md:pl-10 flex items-center">
@@ -34,10 +34,10 @@
                             </svg>
                         </a>
                         <span id="itemsInCart" class="w20 hidden md:inline-block">0</span>
-                        <div class="md:hidden h-8 w-8 mr-2 ml-2">
+                        <div id="openMobileNav" class="md:hidden h-8 w-8 mr-2 ml-2">
                             <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
-                              </svg>
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -109,21 +109,40 @@
         </div>
     </div>
 
-    <div class="h-8 mt-10 md:mt-20 bgLightPurple"></div>
-    <footer class="bgDarkPurple h-16 items-center">
-        <nav class="flex justify-around text-white pt-5">
-            <div class="logo pl-10 hidden md:flex">
-                <svg class="w-6 h-6 text-white mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                <span>RIO DE JANEIRO 300, CAPITAL FEDERAL.</span>
+    <div data-popbox-id="mypopbox2" class="popbox">
+        <div class="popbox_containerMobile">
+            <div class="flex flex-col justify-between">
+                <button data-popbox-close="mypopbox2" class="focus:outline-none flex justify-end">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 focus:outline-none" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </button>
+                <a class="text-1xl p-3" href="index.html">INICIO</a>
+                <a class="text-1xl p-3 border-t" href="veterinaria.html">VETERINARIA</a>
+                <a class="text-1xl p-3 border-t" href="accesorios.html">ACCESORIOS</a>
+                <a class="text-1xl p-3 border-t" href="contacto.html">CONTACTO</a>
             </div>
-            <div class="navItems flex">
-                <a class="text-gray-400 text-xs md:text-base mx-4" href="index.html">INICIO</a>
-                <a class="text-gray-400 text-xs md:text-base mx-4" href="veterinaria.html">VETERINARIA</a>
-                <a class="text-gray-400 text-xs md:text-base mx-4" href="accesorios.html">ACCESORIOS</a>
-                <a class="text-gray-400 text-xs md:text-base mx-4" href="contacto.html">CONTACTO</a>
-            </div>
-        </nav>
-    </footer>
+        </div>
+    </div>
+
+    <div class="mt-10 md:mt-0">
+        <div class="h-8 bgLightPurple"></div>
+        <footer class="bgDarkPurple h-16 items-center">
+            <nav class="flex justify-around text-white pt-5">
+                <div class="logo pl-10 hidden md:flex">
+                    <svg class="w-6 h-6 text-white mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <span>RIO DE JANEIRO 300, CAPITAL FEDERAL.</span>
+                </div>
+                <div class="navItems flex">
+                    <a class="text-gray-400 text-xs md:text-base mx-4" href="index.html">INICIO</a>
+                    <a class="text-gray-400 text-xs md:text-base mx-4" href="veterinaria.html">VETERINARIA</a>
+                    <a class="text-gray-400 text-xs md:text-base mx-4" href="accesorios.html">ACCESORIOS</a>
+                    <a class="text-gray-400 text-xs md:text-base mx-4" href="contacto.html">CONTACTO</a>
+                </div>
+            </nav>
+        </footer>
+    </div>
+
 
     <script src="/scripts/popbox.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>

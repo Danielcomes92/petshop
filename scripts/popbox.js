@@ -42,7 +42,7 @@ class Popbox{
 		if(popboxs){
 			for (var i = 0; i < popboxs.length; i++) {
 			    popboxs[i].addEventListener('click', function(e){
-			   		e.preventDefault();
+			   		// e.preventDefault();
 					var popbox_id = e.target.getAttribute('data-popbox-id');
 					if(popbox_id){
 						self.close(popbox_id);
