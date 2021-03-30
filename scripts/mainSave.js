@@ -100,13 +100,12 @@ function App(data) {
     document.querySelector('#cart').addEventListener('click', () => {
         checkCartLength();
         getTotal();
-        popbox.open('mypopbox1');
-        // const cartContainer = document.querySelector('#cartContainer')
-        //  if(cartContainer.classList.contains('hidden')) {
-        //     cartContainer.classList.remove('hidden')
-        //  } else {
-        //     cartContainer.classList.add('hidden')
-        //  }
+        const cartContainer = document.querySelector('#cartContainer')
+         if(cartContainer.classList.contains('hidden')) {
+            cartContainer.classList.remove('hidden')
+         } else {
+            cartContainer.classList.add('hidden')
+         }
 
      })
 
@@ -133,11 +132,11 @@ function App(data) {
 
     const tHeadElements = document.querySelector('#tHead');
     function checkCartLength() {
-        // if(cart.length > 0) {
-        //     tHeadElements.classList.remove('hidden')
-        // } else {
-        //     tHeadElements.classList.add('hidden')
-        // }
+        if(cart.length > 0) {
+            tHeadElements.classList.remove('hidden')
+        } else {
+            tHeadElements.classList.add('hidden')
+        }
     }
 
     function getTotal() {
@@ -147,39 +146,25 @@ function App(data) {
             totalItems += article.cantidad
             totalPurchase += article.cantidad * article.precio
         });
-        // btnEndShopping.innerHTML = `${totalItems > 0 ? `Finalizar compra: (${totalItems} prod.  $${totalPurchase})` : 'El carrito esta vacio' }`;
-        // document.querySelector('#itemsInCart').innerHTML = totalItems;
+        btnEndShopping.innerHTML = `${totalItems > 0 ? `Finalizar compra: (${totalItems} prod.  $${totalPurchase})` : 'El carrito esta vacio' }`;
+        document.querySelector('#itemsInCart').innerHTML = totalItems;
     }
 
     function renderProducts(cart) {
         const listItems = document.querySelector('#listItems');
         listItems.innerHTML = ''
         cart.map(article => {
-            let div = document.createElement('div');
-            div.innerHTML = `
-            <div class="flex flex-col mt-6 pt-2">
-                <span class="text-xs md:mb-0 md:text-base font-medium">${article.nombre}</span>
-                <span class="text-xs font-light text-gray-700">#${article.tipo}</span>
-            </div>
-            <div class="flex justify-between items-center">
-                <div>
-                    <img src="${article.imagen}" width="60" class="rounded-full ">
-                </div>
-                <div class="flex justify-center items-center">
-                    <div class="pr-4 flex wFixed100">
-                        <span class="font-semibold mr-1 cursor-pointer" data-thisArticle="minus" name="btn${article._id}">-</span> 
-                        <span type="text" class="focus:outline-none bg-gray-100 text-center border h-6 w-8 rounded text-sm px-2 md:mx-2" data-quanty="${article._id}">${article.cantidad}</span>
-                        <span class="font-semibold ml-1 cursor-pointer" data-thisArticle="more" name="btn${article._id}">+</span> 
-                    </div>
-                    <div class="flex wFixed100">
-                        <span class="text-xs md:text-base ml-2 font-medium wFixed50">$${article.precio * article.cantidad}</span>
-                        <div class="text-xs md:text-base ml-2 font-bold text-black cursor-pointer" data-remove="${article._id}">X</div> 
-                    </div>
-                    <div> <i class="fa fa-close text-xs font-medium"></i> </div>
-                </div>
-            </div>
+            const tr = document.createElement('tr');
+            tr.classList.add('py-2')
+            tr.innerHTML = `
+                <td data-thisArticle="minus" name="btn${article._id}" class="w10 cursor-pointer text-center">-</td>
+                <td data-quanty="${article._id}" class="w10 text-center">${article.cantidad}</td>
+                <td data-thisArticle="more" name="btn${article._id}" class="w10 cursor-pointer text-center">+</td>
+                <td class="pr-4 text-center w80">${article.nombre}</td>
+                <td class="w10">$${article.precio * article.cantidad}</td>
+                <td> <div class="text-red-700 font-bold text-1xl cursor-pointer" data-remove="${article._id}">X</div></td>
             `;
-            listItems.appendChild(div);
+            listItems.appendChild(tr);
     
             if(document.getElementsByName(`btn${article._id}`)) {
                 const currentArticle = Array.from(document.getElementsByName(`btn${article._id}`));
@@ -259,7 +244,7 @@ function App(data) {
     }
     
 
-    // btnEndShopping.addEventListener('click', endShopping);
+    btnEndShopping.addEventListener('click', endShopping);
     function endShopping() {
         if(cart.length > 0) {
             cart = [];
@@ -268,21 +253,14 @@ function App(data) {
         }
     }
 
-    var popbox = new Popbox({
-        blur:true,
-        overlay:true,
-    });
-
-    
-
-
-
-
-
-
-
-
 }
 
 
 console.log('hola')
+
+
+
+
+
+
+

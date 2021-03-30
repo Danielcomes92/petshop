@@ -152,7 +152,7 @@ main {
     height: 175px;
 }
 
-#cartContainer {
+/* #cartContainer {
     width: 600px;
     left: -600px;
     top: 44.5px;
@@ -160,7 +160,7 @@ main {
     color: black;
     border: 0.5px solid lightblue;
     padding: 4px;
-}
+} */
 
 .w10 {
     width: 5%;
@@ -188,4 +188,12 @@ main {
 
 .w20 {
     width: 20px;
+}
+
+.wFixed100 {
+    width: 100px;
+}
+
+.wFixed50 {
+    width: 50px;
 }
