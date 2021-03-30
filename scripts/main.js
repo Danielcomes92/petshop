@@ -50,7 +50,7 @@ function App(data) {
                     <div class="flex justify-center">
                         <div class="relative">
                             <div class="flex justify-center md:pt-12">
-                                <img class="w-2/5 md:w-3/5" src="${article.imagen}" alt="${article.tipo} de petshop en exhibicion">
+                                <img class="wFixed50" src="${article.imagen}" alt="${article.tipo} de petshop en exhibicion">
                             </div>
                             <span data-stock="stock${article._id}" id="availability" class="${article.stock > 5 ? 'hidden' : 'absolute top-0 right-0 p-1 bg-red-700 text-white text-sm font-semibold'}">Ultimas unidades!</span> </div>
                         </div>
