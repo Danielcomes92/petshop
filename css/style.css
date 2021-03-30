@@ -98,7 +98,7 @@ main {
     height: 90vh;
 }
 
-#middleHome {
+.middleHome {
     min-height: 100vh;
 }
 
@@ -123,7 +123,11 @@ main {
     transition: all 0.4s;
 }
 
-#mainVetAccesoriosContact { 
+textarea {
+    resize: none;
+}
+
+#mainVetAccesoriosContact {
     min-height: 61vh;
 }
 
@@ -147,11 +151,7 @@ main {
 }
 
 #formContact {
-    width: 500px;
-}
-
-.uno {
-    width: 60%;
+    width: 350px;
 }
 
 .articleName {

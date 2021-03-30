@@ -49,13 +49,13 @@ function App(data) {
                 <div data-container=${article._id} class="containerImgName contCardInternal">
                     <div class="flex justify-center">
                         <div class="relative">
-                            <div class="flex justify-center pt-12">
-                                <img class="uno" src="${article.imagen}" alt="Foto producto de veterinaria ${article.tipo}">
+                            <div class="flex justify-center md:pt-12">
+                                <img class="w-2/5 md:w-3/5" src="${article.imagen}" alt="Foto producto de veterinaria ${article.tipo}">
                             </div>
                             <span data-stock="stock${article._id}" id="availability" class="${article.stock > 5 ? 'hidden' : 'absolute top-0 right-0 p-1 bg-red-700 text-white text-sm font-semibold'}">Ultimas unidades!</span> </div>
                         </div>
                     </div>
-                    <div class="mt-20 flex justify-around border-t-2">
+                    <div class="sm:mt-20 flex justify-around border-t-2">
                         <div class="articleName mt-5 md:mt-0 px-6 pt-2">
                             <div class="font-bold text-base">${article.nombre}</div>
                         </div>
@@ -65,8 +65,14 @@ function App(data) {
                             <p data-id="${article._id}" class="px-1 py-2 italic block text-blue-700 cursor-pointer">Leer Descripción</p>
                             <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#${article.tipo}</span>
                         </div>
-                        <svg id="${article._id}" class="w-8 h-8 inline-block cursor-pointer" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                        <span class="font-bold text-sm">$${article.precio}</span>
+                        <div class="flex justify-start items-center">
+                            <a class="w-8 h-8 inline-block mr-2">
+                                <svg id="${article._id}" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor">
+                                    <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                                </svg> 
+                            </a>
+                            <span class="font-bold text-sm">$${article.precio}</span>
+                        </div>
                     </div>
                 </div>
             </div>
