@@ -259,7 +259,7 @@ function App(data) {
             const messageTextarea = document.querySelector('#messageContent').value;
             const inputWrong = (Array.from(inputName)).some(Number) || inputName === '' || inputEmail === '' || checkboxChecked.length <= 0 || messageTextarea.length === 0;
             if(!inputWrong) {
-                notify(`Tu consulta ha sido enviada correctamente!`, 2000, 'success')
+                notify(`Tu consulta ha sido enviada correctamente!`, 8000, 'success')
                 contactPage.value = 'Hay campos incompletos o erróneos :('
                 contactPage.classList.add('bg-red-500', 'cursor-not-allowed')
                 contactPage.classList.remove('bg-green-500')
