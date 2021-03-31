@@ -48,14 +48,14 @@ function App(data) {
                 </div>
                 <div data-container=${article._id} class="containerImgName contCardInternal">
                     <div class="flex justify-center">
-                        <div class="">
-                            <div class="flex justify-center md:pt-12">
-                                <img class="w-1/2" src="${article.imagen}" alt="${article.tipo} de petshop en exhibicion">
+                        <div class="cardImgContainer">
+                            <div class="cardImgContainer">
+                                <div class="cardImage" id="img${article._id}"> </div>
+                                </div>
                             </div>
-                            <span data-stock="stock${article._id}" id="availability" class="${article.stock > 5 ? 'hidden' : 'p-1 bg-red-700 text-white text-sm font-semibold'}">Ultimas unidades!</span> </div>
                         </div>
-                    </div>
-                    <div class="sm:mt-20 flex justify-around border-t-2">
+                    <span data-stock="stock${article._id}" id="availability" class="${article.stock > 5 ? 'hidden' : 'p-1 text-white bg-red-700 text-sm font-bold'}">Ultimas unidades!</span> </div>
+                    <div class="sm:mt-20 flex justify-around border-t-2 mt-5">
                         <div class="articleName mt-5 md:mt-0 px-6 pt-2">
                             <div class="font-bold text-base">${article.nombre}</div>
                         </div>
@@ -77,7 +77,11 @@ function App(data) {
                 </div>
             </div>
             `;           
-            container.appendChild(div); 
+            container.appendChild(div);
+
+            document.getElementById(`img${article._id}`).style.backgroundImage = `url("${article.imagen}")`
+            // document.querySelector(`div[data-imagen="${article._id}"]`).getAttribute('data-imagen')
+            // console.log(image)
   
             const openDesc = document.querySelector(`p[data-id="${article._id}"]`);
             openDesc.addEventListener('click', () => {
