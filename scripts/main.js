@@ -11,11 +11,15 @@ async function getArticles(url) {
 } getArticles(url)
 
 function App(data) {
+    // es el array que va a ser utilizado segun interese
     let cart = []
+
+    //verifico si existe el carrito en localstorage
     if(localStorage.getItem('carrito')) {
         cart = JSON.parse(localStorage.getItem('carrito'));
     }
 
+    //a estos dos arrays van a parar los objetos segun hayan sido divididos en el map correspondiente
     articlesToys = [];
     articlesPharma = [];
     
@@ -43,7 +47,7 @@ function App(data) {
             let div = document.createElement('div')
             div.innerHTML = `
             <div class="rounded overflow-hidden shadow-md hover:shadow-lg flex flex-col justify-between">
-                <div data-desc=${article._id} class="hidden containerImgName contCardInternal text-sm p-4 pt-6 text-justify">
+                <div data-desc=${article._id} class="hidden containerImgName contCardInternal text-xs lg:text-sm p-4 pt-4 text-justify">
                     ${article.descripcion}
                 </div>
                 <div data-container=${article._id} class="containerImgName contCardInternal">
@@ -54,43 +58,42 @@ function App(data) {
                                 </div>
                             </div>
                         </div>
-                    <span data-stock="stock${article._id}" id="availability" class="${article.stock > 5 ? 'hidden' : 'p-1 text-white bg-red-700 text-sm font-bold'}">Ultimas unidades!</span> </div>
-                    <div class="sm:mt-20 flex justify-around border-t-2 mt-5">
+                    <span data-stock="stock${article._id}" id="availability" class="${article.stock > 5 ? 'hidden' : 'p-1 text-gray-100 bg-red-600 text-sm font-semibold'}">Ultimas unidades!</span> </div>
+                    <div class="sm:mt-20 border-t-2 mt-5">
                         <div class="articleName mt-5 md:mt-0 px-6 pt-2">
                             <div class="font-bold text-base">${article.nombre}</div>
                         </div>
                     </div>
                     <div class="px-6 pt-2 pb-2">
                         <div class="block">
-                            <p data-id="${article._id}" class="px-1 py-2 italic block text-blue-700 cursor-pointer">Leer Descripción</p>
-                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#${article.tipo}</span>
+                            <p data-id="${article._id}" class="px-1 py-2 italic block text-gray-700 cursor-pointer">Leer más</p>
+                            <span class="inline-block bg-gray-200 rounded-full px-3 py-2 text-sm text-gray-700 mr-2 mb-2">#${article.tipo === 'Juguete' ? 'Accesorios' : 'Medicamentos'}</span>
                         </div>
-                        <div class="flex justify-start items-center">
-                            <a class="w-8 h-8 inline-block mr-2">
-                                <svg id="${article._id}" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor">
-                                    <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                                </svg> 
-                            </a>
-                            <span class="font-bold text-sm">$${article.precio}</span>
+                        <div class="flex justify-between items-center">
+                        <div class="flex flex-row">
+                            <button class="p-2 md:p-1 lg:p-2 bgPurple hover:bg-purple-700 text-sm text-white rounded font-semibold focus:outline-none" id="${article._id}">Agregar al carrito</button>
+                        </div>
+                        <div>
+                            <span class="font-semibold colDarkestPurple text-lg items-center"> <b class="text-1xl md:text-2xl">$</b>${article.precio}</span>
                         </div>
                     </div>
                 </div>
             </div>
-            `;           
+            `;
             container.appendChild(div);
 
-            document.getElementById(`img${article._id}`).style.backgroundImage = `url("${article.imagen}")`
-            // document.querySelector(`div[data-imagen="${article._id}"]`).getAttribute('data-imagen')
-            // console.log(image)
+            document.getElementById(`img${article._id}`).style.backgroundImage = `url("${article.imagen}")`;
   
             const openDesc = document.querySelector(`p[data-id="${article._id}"]`);
             openDesc.addEventListener('click', () => {
                 const description = document.querySelector(`div[data-desc="${article._id}"]`);
                 const containerImgName = document.querySelector(`div[data-container="${article._id}"]`);
                 if(description.classList.contains('hidden')) {
+                    openDesc.innerText = 'Cerrar'
                     description.classList.remove('hidden')
                     containerImgName.classList.add('hidden')
                 } else {
+                    openDesc.innerText = 'Leer más'
                     description.classList.add('hidden')
                     containerImgName.classList.remove('hidden')
                 }                
@@ -151,10 +154,10 @@ function App(data) {
         const buttonPurchase = document.createElement('button');
 
         if(totalItems > 0) {
-            buttonPurchase.className = 'h-12 w-full mt-5 bgDarkPurple rounded focus:outline-none transition ease-in-out duration-200 text-white hover:bg-purple-700'
-            buttonPurchase.innerText = 'Finalizar compra'
+            buttonPurchase.className = 'h-12 w-full mt-5 bgPurple rounded focus:outline-none transition ease-in-out duration-200 text-white hover:bg-purple-700'
+            buttonPurchase.innerText = `${totalItems === 1  ? 'Finalizar compra (1 Articulo)' : `Finalizar compra (${totalItems} Articulos)`}`;
         } else {
-            buttonPurchase.className = 'h-12 w-full mt-5 cursor-not-allowed text-gray-400 border-gray-300 border rounded focus:outline-none'
+            buttonPurchase.className = 'h-12 w-full mt-5 cursor-not-allowed text-gray-400 border-gray-300 border rounded focus:outline-none';
             buttonPurchase.innerText = 'El carrito esta vacio'
         }
         buttonPurchase.setAttribute('id', 'btnEndShopping');
@@ -181,21 +184,21 @@ function App(data) {
                 let div = document.createElement('div');
                 div.innerHTML = `
                 <div class="flex flex-col mt-6 pt-2">
-                    <span class="text-xs md:mb-0 md:text-base font-medium">${article.nombre}</span>
-                    <span class="text-xs font-light text-gray-700">#${article.tipo}</span>
+                    <span class="text-xs md:mb-0 md:text-lg font-medium">${article.nombre}</span>
+                    <span class="text-xs md:text-base font-light text-gray-700">Categoria #${article.tipo}</span>
                 </div>
                 <div class="flex justify-between items-center">
                     <div>
-                        <img src="${article.imagen}" width="60" class="rounded-full ">
+                        <img src="${article.imagen}" width="75" class="rounded-full ">
                     </div>
                     <div class="flex justify-center items-center">
                         <div class="pr-4 flex wFixed100">
                             <span class="font-semibold mr-1 cursor-pointer" data-thisArticle="minus" name="btn${article._id}">-</span> 
-                            <span type="text" class="focus:outline-none bg-gray-100 text-center border h-6 w-8 rounded text-sm px-2 md:mx-2" data-quanty="${article._id}">${article.cantidad}</span>
+                            <span type="text" class="focus:outline-none bg-gray-100 text-center cursor-default border h-6 w-8 rounded text-sm px-2 md:mx-2" data-quanty="${article._id}">${article.cantidad}</span>
                             <span class="font-semibold ml-1 cursor-pointer" data-thisArticle="more" name="btn${article._id}">+</span> 
                         </div>
                         <div class="flex wFixed100">
-                            <span class="text-xs md:text-base ml-2 font-medium wFixed50">$${article.precio * article.cantidad}</span>
+                            <span class="text-xs md:text-base ml-2 font-medium wFixed50 cursor-default">$${article.precio * article.cantidad}</span>
                             <div class="text-xs md:text-base ml-2 font-bold text-black cursor-pointer" data-remove="${article._id}">X</div> 
                         </div>
                         <div> <i class="fa fa-close text-xs font-medium"></i> </div>
