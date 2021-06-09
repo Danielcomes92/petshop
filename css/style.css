@@ -77,7 +77,6 @@ main {
 
 #bannerAccesories {
     background-image: url('/img/bannerAccesories.png');
-    background-color: white;
     background-position: center;
     margin: auto;
     background-repeat: no repeat;
