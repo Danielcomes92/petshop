@@ -11,5 +11,12 @@ npm install
 ```
 
 # Construido con 🛠️
-- JavaScript Vanilla
-- TailwindCss
+* JavaScript - Lenguaje de Frontend
+* [TailwindCss](https://tailwindcss.com/) - UI Framework
+* [Node](https://nodejs.org/es/) - Lenguaje de Backend
+
+# Autor ✒️
+* **Daniel Comes** - [Daniel](https://github.com/Danielcomes92)
+
+# Link hacia el proyecto
+[Petshop Franco's](https://petshop-dancom.netlify.app/)
